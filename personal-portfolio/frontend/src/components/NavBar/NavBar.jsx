@@ -8,7 +8,7 @@ const menu = ['home', 'about', 'work', 'skills', 'contact'];
 
 const NavBar = () => {
 
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
 
     return (
         <nav className="app__navbar">
@@ -26,7 +26,7 @@ const NavBar = () => {
 
             <div className="app__navbar-menu">
 
-                    <HiMenuAlt4 onClick={() => setToggle(false)}/>
+                    <HiMenuAlt4 onClick={() => setToggle(true)}/>
                     
                     {toggle && (
                         <motion.div
@@ -34,10 +34,12 @@ const NavBar = () => {
                             transition={{ duration: 0.85, ease: 'easeOut' }}
                         >
                             <HiX onClick={() => setToggle(false)}/>
-                            { menu.map((item) => (
-                             <li key={item} >
-                                <a href={`#${item}`} onClick={() => setToggle(false)} >{item}</a>
-                             </li> )) }
+                            <ul>
+                                { menu.map((item) => (
+                                <li key={item} >
+                                    <a href={`#${item}`} onClick={() => setToggle(false)} >{item}</a>
+                                </li> )) }
+                             </ ul>
                         </motion.div>
                     )}
             </div>
